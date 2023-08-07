@@ -14,7 +14,41 @@
 
 
 class User:
-    pass
+    def __init__(self, name, password):
+        self.__name = name
+        self.__password = password
+        self.is_admin = False
+        self._is_admin = False
+
+    @property
+    def name(self):
+        return self.__name
+
+    @property
+    def password(self):
+        return self.__password
+
+    @password.setter
+    def password(self, password):
+        self.__password = password
+
+    @property
+    def _is_admin(self):
+        return self._is_admin
+
+    @_is_admin.setter
+    def _is_admin(self, bool):
+        self.is_admin = bool
+        return self.is_admin
+
+    def login(self, password):
+        if password == self.__password:
+            return print(True)
+        return False
+
+    def logout(self):
+        self._is_admin(self, False)
+        # return self._is_admin
 
 
 user1 = User("Alice", "qwerty")
